@@ -19,7 +19,8 @@ function runScript(callbackScriptJson) {
         if ("string" !== typeof(res)) {
             return JSON.stringify(res);
         }
+        return res;
     } catch(e) {
-        throw new Error(e.message + "\n" + "JS call data: [" + callbackScriptJson + "]" + "\n" + e.stack);
+        throw new Error("JS call data: [" + callbackScriptJson + "]" + "\n" + e.stack);
     }
 }
