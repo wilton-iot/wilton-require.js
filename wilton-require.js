@@ -80,6 +80,16 @@ process = {env: {}};
 function test(label, func) {
     "use strict";
     
+    if ("function" === typeof(label)) {
+        func = label;
+        label = "unnamed";
+    }
+    
     print("test: " + label);
     func();
+}
+
+function suite(label) {
+    "use strict";
+    print("test: " + label);
 }
