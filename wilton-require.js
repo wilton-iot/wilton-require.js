@@ -24,21 +24,39 @@ WILTON_load(WILTON_REQUIREJS_DIRECTORY + "require.js");
 
 }());
 
+function WILTON_requiresync(modname) {
+    "use strict";
+    
+    // string ".js" extension
+    var jsext = ".js";
+    if (modname.indexOf(jsext, modname.length - jsext.length) !== -1) {
+        modname = modname.substr(0, modname.length - 3);
+    }
+
+    // require is always sync in wilton environment
+    var module = null;
+    require([modname], function(mod) {
+        module = mod;
+    });
+    return module;
+}
+
 function WILTON_run(callbackScriptJson) {
+    "use strict";
+    
     try {
         var cs = JSON.parse(callbackScriptJson);
         if ("string" !== typeof (cs.module) || "string" !== typeof (cs.func) ||
                 "undefined" === typeof (cs.args) || !(cs.args instanceof Array)) {
             throw new Error("Invalid 'callbackScriptJson' specified");
         }
-        var module;
-        // require is always sync in wilton environment
-        require([cs.module], function(mod) {
-            module = mod;
-        });
-        // target call
-        var res = module[cs.func].apply(module, cs.args);
-        if ("undefined" === typeof (res) || null === res) {
+        var module = WILTON_requiresync(cs.module);
+        var res = null;
+        if ("" !== cs.func) {
+            // target call
+            var res = module[cs.func].apply(module, cs.args);
+        }
+        if (null === res) {
             return "";
         }
         if ("string" !== typeof (res)) {
@@ -54,6 +72,14 @@ function WILTON_run(callbackScriptJson) {
     }
 }
 
+// misc required globals
 
+global = {};
+process = {env: {}};
 
-
+function test(label, func) {
+    "use strict";
+    
+    print("test: " + label);
+    func();
+}
