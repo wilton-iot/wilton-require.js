@@ -101,10 +101,22 @@ function test(label, func, func2) {
     }
     
     print("test: " + label);
-    func();
+    var assert = WILTON_requiresync("assert");
+    assert.end = function() {};
+    assert.plan = function() {};
+    assert.same = assert.deepEqual;
+    func(assert);
 }
 
+define("tape", function() {
+    return test;
+});
+
 asyncTest = test;
+
+describe = test;
+
+it = test;
 
 function suite(label) {
     "use strict";

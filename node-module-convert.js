@@ -30,7 +30,7 @@ function convert(modname, path) {
         output.write("\n");
     }
     while(null !== line) {
-        line = line.replace(new RegExp("(require\\(\\'|\\\")\\.\\/", "g"), "\$1" + modname + "/");
+        line = line.replace(new RegExp("(require\\(\\'|\\\")\\.\\.?\\/", "g"), "\$1" + modname + "/");
         output.write(line);
         output.write("\n");
         line = input.readLine();
