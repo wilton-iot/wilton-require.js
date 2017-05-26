@@ -79,6 +79,9 @@ global = {};
 process = {env: {}};
 amd = true;
 
+// sync call for bluebird
+setTimeout = function(fun) { fun(); };
+
 assert = WILTON_requiresync('assert');
 ok = assert.ok;
 equal = assert.equal;
