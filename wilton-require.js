@@ -74,10 +74,21 @@ function WILTON_run(callbackScriptJson) {
 
 // misc required globals
 
+console = { log: print };
 global = {};
 process = {env: {}};
+amd = true;
 
-function test(label, func) {
+assert = WILTON_requiresync('assert');
+ok = assert.ok;
+equal = assert.equal;
+strictEqual = assert.strictEqual;
+deepEqual = assert.deepEqual;
+notEqual = assert.notEqual;
+throws = assert.throws;
+notStrictEqual = assert.notStrictEqual;
+
+function test(label, func, func2) {
     "use strict";
     
     if ("function" === typeof(label)) {
@@ -85,11 +96,26 @@ function test(label, func) {
         label = "unnamed";
     }
     
+    if ("function" !== typeof (func) && "function" === typeof(func2)) {
+        func = func2;
+    }
+    
     print("test: " + label);
     func();
 }
+
+asyncTest = test;
 
 function suite(label) {
     "use strict";
     print("test: " + label);
 }
+
+QUnit = {
+    module: function(label) {
+        "use strict";
+        print("test: " + label);
+    },
+    
+    config: {}
+};
