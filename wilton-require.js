@@ -107,6 +107,7 @@ function test(label, func, func2) {
     var assert = WILTON_requiresync("assert");
     assert.end = function() {};
     assert.plan = function() {};
+    assert.done = function() {};
     assert.same = assert.deepEqual;
     func(assert);
 }
