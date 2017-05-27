@@ -220,4 +220,13 @@ function expect(actual) {
     return res;
 }
 
-
+// https://bugs.openjdk.java.net/browse/JDK-8068972
+WILTON_Array_prototype_splice_orig = Array.prototype.splice;
+Array.prototype.splice = function() {
+    if (1 === arguments.length) {
+        var args = Array.prototype.slice.call(arguments);
+        args.push(this.length - args[0]);
+        return WILTON_Array_prototype_splice_orig.apply(this, args);
+    }
+    return WILTON_Array_prototype_splice_orig.apply(this, arguments);
+};
