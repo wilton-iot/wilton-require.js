@@ -72,15 +72,34 @@ function WILTON_run(callbackScriptJson) {
     }
 }
 
+// duktape buffers
+delete Buffer;
+delete ArrayBuffer;
+delete DataView;
+delete Int8Array;
+delete Uint8Array;
+delete Uint8ClampedArray;
+delete Int16Array;
+delete Uint16Array;
+delete Int32Array;
+delete Uint32Array;
+delete Float32Array;
+delete Float64Array;
+
 // misc required globals
 
 console = { log: print };
-global = {};
+global = { console: console };
 process = {env: {}};
 amd = true;
 
+// compat buffers
+Buffer = WILTON_requiresync("buffer").Buffer;
+
 // sync call for bluebird
 setTimeout = function(fun) { fun(); };
+setInterval = setTimeout;
+setImmediate = function(fun, arg) { fun(arg); };
 
 assert = WILTON_requiresync('assert');
 ok = assert.ok;
@@ -109,6 +128,12 @@ function test(label, func, func2) {
     assert.plan = function() {};
     assert.done = function() {};
     assert.same = assert.deepEqual;
+    assert.notOk = function(expr, msg) {
+        return assert.ok(!expr, msg);
+    };
+    assert.test = test;
+    assert.pass = function() {};
+    assert.equals = assert.equal;
     func(assert);
 }
 
@@ -121,6 +146,8 @@ asyncTest = test;
 describe = test;
 
 it = test;
+
+after = test;
 
 function suite(label) {
     "use strict";
