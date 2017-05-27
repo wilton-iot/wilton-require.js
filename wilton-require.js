@@ -90,7 +90,15 @@ delete Float64Array;
 
 console = { log: print };
 global = { console: console };
-process = {env: {}, stdout: {write: print }};
+process = {
+    env: {}, 
+    stdout: {
+        write: print, 
+        on: function() {},
+        once: function() {},
+        emit: function() {}
+    }
+};
 amd = true;
 
 // compat buffers
