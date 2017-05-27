@@ -90,7 +90,7 @@ delete Float64Array;
 
 console = { log: print };
 global = { console: console };
-process = {env: {}};
+process = {env: {}, stdout: {write: print }};
 amd = true;
 
 // compat buffers
@@ -162,3 +162,54 @@ QUnit = {
     
     config: {}
 };
+
+function expect(actual) {
+    var res = {
+        to: {
+            equal: function(expected) {
+                assert.equal(actual, expected);
+            },
+            eql: function(expected) {
+                assert.deepEqual(actual, expected);
+            },
+            have: {
+                length: function(expectedlen) {
+                    assert.equal(actual.length, expectedlen);
+                }
+            },
+            not: {
+                be: {
+                    ok: function() {
+                        assert.ok(!actual);
+                    },
+                    empty: function() {
+                        assert.ok(actual.length > 0);
+                    }
+                }
+            },
+            be: function(expected) {
+                assert.strictEqual(actual, expected);
+            }
+        }
+    };
+    
+    res.to.be.ok = function() {
+        assert.ok(actual);
+    };
+    
+    res.to.be.a = function(ctor) {
+        if ("string" === typeof(ctor)) {
+            assert.ok(ctor === typeof(actual));
+        } else {
+            assert.ok(actual instanceof ctor);
+        }
+    };
+
+    res.to.be.empty = function() {
+        assert.equal(actual.length, 0);
+    };
+    
+    return res;
+}
+
+
