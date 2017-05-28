@@ -230,3 +230,19 @@ Array.prototype.splice = function() {
     }
     return WILTON_Array_prototype_splice_orig.apply(this, arguments);
 };
+
+// "new String(...)" is not iterable with "for key in .." in Rhino
+WILTON_Object_keys_orig = Object.keys;
+Object.keys = function(obj) {
+    if ("object" === typeof(obj) && obj instanceof String) {
+        var res = WILTON_Object_keys_orig(obj);
+        if (res.length !== obj.length) {
+            res = [];
+            for(var i = 0; i < obj.length; i++) {
+                res.push(String(i));
+            }
+        }
+        return res;
+    }
+    return WILTON_Object_keys_orig(obj);
+};
