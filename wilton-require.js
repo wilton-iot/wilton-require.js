@@ -41,6 +41,15 @@ function WILTON_requiresync(modname) {
     return module;
 }
 
+function WILTON_requiresync_lenient(modname) {
+    "use strict";
+    try {
+        return WILTON_requiresync(modname);
+    } catch (e) {
+        return {};
+    }
+}
+
 function WILTON_run(callbackScriptJson) {
     "use strict";
     
@@ -72,8 +81,27 @@ function WILTON_run(callbackScriptJson) {
     }
 }
 
-// duktape/nashorn buffers
-Buffer = undefined;
+// misc common globals
+console = {log: print};
+global = {console: console};
+process = {
+    env: {},
+    stdout: {
+        write: print,
+        on: function() {},
+        once: function() {},
+        emit: function() {}
+    }
+};
+amd = true;
+
+// sync calls for bluebird
+setTimeout = function(fun) { fun();};
+setInterval = setTimeout;
+setImmediate = function(fun, arg) { fun(arg);};
+
+// disable native arrays with
+// inconsistent cross-engine support
 ArrayBuffer = undefined;
 DataView = undefined;
 Int8Array = undefined;
@@ -86,140 +114,10 @@ Uint32Array = undefined;
 Float32Array = undefined;
 Float64Array = undefined;
 
-// misc required globals
+// use compat buffers, may be not available in current modules set
+Buffer = WILTON_requiresync_lenient("buffer").Buffer;
 
-console = { log: print };
-global = { console: console };
-process = {
-    env: {}, 
-    stdout: {
-        write: print, 
-        on: function() {},
-        once: function() {},
-        emit: function() {}
-    }
-};
-amd = true;
-
-// compat buffers
-Buffer = WILTON_requiresync("buffer").Buffer;
-
-// sync call for bluebird
-setTimeout = function(fun) { fun(); };
-setInterval = setTimeout;
-setImmediate = function(fun, arg) { fun(arg); };
-
-assert = WILTON_requiresync('assert');
-ok = assert.ok;
-equal = assert.equal;
-strictEqual = assert.strictEqual;
-deepEqual = assert.deepEqual;
-notEqual = assert.notEqual;
-throws = assert.throws;
-notStrictEqual = assert.notStrictEqual;
-
-function test(label, func, func2) {
-    "use strict";
-    
-    if ("function" === typeof(label)) {
-        func = label;
-        label = "unnamed";
-    }
-    
-    if ("function" !== typeof (func) && "function" === typeof(func2)) {
-        func = func2;
-    }
-    
-    print("test: " + label);
-    var assert = WILTON_requiresync("assert");
-    assert.end = function() {};
-    assert.plan = function() {};
-    assert.done = function() {};
-    assert.same = assert.deepEqual;
-    assert.notOk = function(expr, msg) {
-        return assert.ok(!expr, msg);
-    };
-    assert.test = test;
-    assert.pass = function() {};
-    assert.equals = assert.equal;
-    func(assert);
-}
-
-define("tape", function() {
-    return test;
-});
-
-asyncTest = test;
-
-describe = test;
-
-it = test;
-
-after = test;
-
-function suite(label) {
-    "use strict";
-    print("test: " + label);
-}
-
-QUnit = {
-    module: function(label) {
-        "use strict";
-        print("test: " + label);
-    },
-    
-    config: {}
-};
-
-function expect(actual) {
-    var res = {
-        to: {
-            equal: function(expected) {
-                assert.equal(actual, expected);
-            },
-            eql: function(expected) {
-                assert.deepEqual(actual, expected);
-            },
-            have: {
-                length: function(expectedlen) {
-                    assert.equal(actual.length, expectedlen);
-                }
-            },
-            not: {
-                be: {
-                    ok: function() {
-                        assert.ok(!actual);
-                    },
-                    empty: function() {
-                        assert.ok(actual.length > 0);
-                    }
-                }
-            },
-            be: function(expected) {
-                assert.strictEqual(actual, expected);
-            }
-        }
-    };
-    
-    res.to.be.ok = function() {
-        assert.ok(actual);
-    };
-    
-    res.to.be.a = function(ctor) {
-        if ("string" === typeof(ctor)) {
-            assert.ok(ctor === typeof(actual));
-        } else {
-            assert.ok(actual instanceof ctor);
-        }
-    };
-
-    res.to.be.empty = function() {
-        assert.equal(actual.length, 0);
-    };
-    
-    return res;
-}
-
+// Nashorn Array.splice fix
 // https://bugs.openjdk.java.net/browse/JDK-8068972
 WILTON_Array_prototype_splice_orig = Array.prototype.splice;
 Array.prototype.splice = function() {
@@ -231,14 +129,15 @@ Array.prototype.splice = function() {
     return WILTON_Array_prototype_splice_orig.apply(this, arguments);
 };
 
+// Rhino Object.keys fix
 // "new String(...)" is not iterable with "for key in .." in Rhino
 WILTON_Object_keys_orig = Object.keys;
 Object.keys = function(obj) {
-    if ("object" === typeof(obj) && obj instanceof String) {
+    if ("object" === typeof (obj) && obj instanceof String) {
         var res = WILTON_Object_keys_orig(obj);
         if (res.length !== obj.length) {
             res = [];
-            for(var i = 0; i < obj.length; i++) {
+            for (var i = 0; i < obj.length; i++) {
                 res.push(String(i));
             }
         }
