@@ -72,19 +72,19 @@ function WILTON_run(callbackScriptJson) {
     }
 }
 
-// duktape buffers
-delete Buffer;
-delete ArrayBuffer;
-delete DataView;
-delete Int8Array;
-delete Uint8Array;
-delete Uint8ClampedArray;
-delete Int16Array;
-delete Uint16Array;
-delete Int32Array;
-delete Uint32Array;
-delete Float32Array;
-delete Float64Array;
+// duktape/nashorn buffers
+Buffer = undefined;
+ArrayBuffer = undefined;
+DataView = undefined;
+Int8Array = undefined;
+Uint8Array = undefined;
+Uint8ClampedArray = undefined;
+Int16Array = undefined;
+Uint16Array = undefined;
+Int32Array = undefined;
+Uint32Array = undefined;
+Float32Array = undefined;
+Float64Array = undefined;
 
 // misc required globals
 
