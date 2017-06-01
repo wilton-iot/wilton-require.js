@@ -8,6 +8,9 @@
 
 WILTON_load(WILTON_REQUIREJS_DIRECTORY + "require.js");
 
+// path to modules dir as an anchor for fs operations
+WILTON_MODULES_DIRECTORY = JSON.parse(WILTON_REQUIREJS_CONFIG).baseUrl;
+
 (function() {
     "use strict";
     
