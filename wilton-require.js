@@ -103,6 +103,9 @@ setTimeout = function(fun) { fun();};
 setInterval = setTimeout;
 setImmediate = function(fun, arg) { fun(arg);};
 
+// switch canEvaluate to false for bluebird
+navigator = null;
+
 // disable native arrays with
 // inconsistent cross-engine support
 ArrayBuffer = undefined;
