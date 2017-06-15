@@ -56,17 +56,24 @@ function WILTON_requiresync_lenient(modname) {
 function WILTON_run(callbackScriptJson) {
     "use strict";
     
+    var func = "";
     try {
         var cs = JSON.parse(callbackScriptJson);
-        if ("string" !== typeof (cs.module) || "string" !== typeof (cs.func) ||
-                "undefined" === typeof (cs.args) || !(cs.args instanceof Array)) {
+        if ("string" !== typeof (cs.module) ||
+                ("undefined" !== typeof (cs.func) && "string" !== typeof(cs.func)) ||
+                ("undefined" !== typeof (cs.args) && !(cs.args instanceof Array))) {
             throw new Error("Invalid 'callbackScriptJson' specified");
         }
         var module = WILTON_requiresync(cs.module);
         var res = null;
-        if ("" !== cs.func) {
+        if ("string" === typeof(cs.func) && "" !== cs.func) {
+            func = cs.func;
+            var args = "undefined" !== typeof (cs.args) ? cs.args : [];
+            if ("function" !== typeof(module[cs.func])) {
+                throw new Error("Invalid 'function' specified, name: [" + cs.func + "]");
+            }
             // target call
-            var res = module[cs.func].apply(module, cs.args);
+            var res = module[cs.func].apply(module, args);
         }
         if (null === res) {
             return "";
@@ -77,9 +84,9 @@ function WILTON_run(callbackScriptJson) {
         return res;
     } catch (e) {
         if ("undefined" !== typeof (WILTON_DUKTAPE)) {
-            throw new Error("JS call data: [" + callbackScriptJson + "]" + "\n" + e.stack);
+            throw new Error("module: [" + cs.module + "], function: [" + func + "]\n" + e.stack);
         } else {
-            throw new Error(e.message + "\nJS call data: [" + callbackScriptJson + "]" + "\n" + e.stack);
+            throw new Error(e.message + "\nmodule: [" + cs.module + "], function: [" + func + "]\n" + e.stack);
         }
     }
 }
