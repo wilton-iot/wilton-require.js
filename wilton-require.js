@@ -9,7 +9,7 @@
 WILTON_load(WILTON_REQUIREJS_DIRECTORY + "require.js");
 
 // path to modules dir as an anchor for fs operations
-WILTON_MODULES_DIRECTORY = JSON.parse(WILTON_REQUIREJS_CONFIG).baseUrl;
+WILTON_MODULES_DIRECTORY = JSON.parse(WILTON_REQUIREJS_CONFIG).baseUrl + "/";
 
 (function() {
     "use strict";
@@ -56,6 +56,7 @@ function WILTON_requiresync_lenient(modname) {
 function WILTON_run(callbackScriptJson) {
     "use strict";
     
+    var modname = "";
     var func = "";
     try {
         var cs = JSON.parse(callbackScriptJson);
@@ -64,6 +65,7 @@ function WILTON_run(callbackScriptJson) {
                 ("undefined" !== typeof (cs.args) && !(cs.args instanceof Array))) {
             throw new Error("Invalid 'callbackScriptJson' specified");
         }
+        modname = cs.module;
         var module = WILTON_requiresync(cs.module);
         var res = null;
         if ("string" === typeof(cs.func) && "" !== cs.func) {
@@ -84,9 +86,9 @@ function WILTON_run(callbackScriptJson) {
         return res;
     } catch (e) {
         if ("undefined" !== typeof (WILTON_DUKTAPE)) {
-            throw new Error("module: [" + cs.module + "], function: [" + func + "]\n" + e.stack);
+            throw new Error("module: [" + modname + "], function: [" + func + "]\n" + e.stack);
         } else {
-            throw new Error(e.message + "\nmodule: [" + cs.module + "], function: [" + func + "]\n" + e.stack);
+            throw new Error(e.message + "\nmodule: [" + modname + "], function: [" + func + "]\n" + e.stack);
         }
     }
 }
