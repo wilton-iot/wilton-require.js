@@ -6,21 +6,26 @@
 
 // see: https://github.com/requirejs/r.js/blob/27594a409b3d37427ec33bdc151ae8a9f67d6b2b/build/jslib/rhino.js
 
-WILTON_load(WILTON_REQUIREJS_DIRECTORY + "require.js");
-
 (function() {
     "use strict";
-    
+
+    // load config, specified by launcher to wiltoncall_initialize
+    var confJson = WILTON_wiltoncall("get_wiltoncall_config", "{}");
+    var confObj = JSON.parse(confJson);
+    if ("string" !== typeof(confObj.defaultScriptEngine) || 
+            "string" !== typeof(confObj.requireJsDirPath) ||
+            "object" !== typeof(confObj.requireJsConfig)) {
+        throw new Error("Invalid incomplete wiltoncall config: [" + conf + "]");
+    }
+
+    // initialize requirejs
+    WILTON_load(confObj.requireJsDirPath + "/require.js");
     require.load = function(context, moduleName, url) {
-
         WILTON_load(url);
-
         //Support anonymous modules.
         context.completeLoad(moduleName);
     };
-    
-    var cfg = JSON.parse(WILTON_REQUIREJS_CONFIG);
-    requirejs.config(cfg);
+    requirejs.config(confObj.requireJsConfig);
 
 }());
 
@@ -39,15 +44,6 @@ function WILTON_requiresync(modname) {
         module = mod;
     });
     return module;
-}
-
-function WILTON_requiresync_lenient(modname) {
-    "use strict";
-    try {
-        return WILTON_requiresync(modname);
-    } catch (e) {
-        return {};
-    }
 }
 
 function WILTON_run(callbackScriptJson) {
@@ -82,11 +78,8 @@ function WILTON_run(callbackScriptJson) {
         }
         return res;
     } catch (e) {
-        if ("undefined" !== typeof (WILTON_DUKTAPE)) {
-            throw new Error("module: [" + modname + "], function: [" + func + "]\n" + e.stack);
-        } else {
-            throw new Error(e.message + "\nmodule: [" + modname + "], function: [" + func + "]\n" + e.stack);
-        }
+        throw new Error("module: [" + modname + "], function: [" + func + "]\n" + e.stack);
+//      throw new Error(e.message + "\nmodule: [" + modname + "], function: [" + func + "]\n" + e.stack);
     }
 }
 
@@ -127,12 +120,22 @@ Float32Array = undefined;
 Float64Array = undefined;
 
 // use compat buffers, may be not available in current modules set
-Buffer = WILTON_requiresync_lenient("buffer").Buffer;
+Buffer = (function() {
+    "use strict";
+    
+    try {
+        return WILTON_requiresync("buffer").Buffer;
+    } catch (e) {
+        return {};
+    }
+} ());
 
 // Nashorn Array.splice fix
 // https://bugs.openjdk.java.net/browse/JDK-8068972
 WILTON_Array_prototype_splice_orig = Array.prototype.splice;
 Array.prototype.splice = function() {
+    "use strict";
+    
     if (1 === arguments.length) {
         var args = Array.prototype.slice.call(arguments);
         args.push(this.length - args[0]);
@@ -145,6 +148,8 @@ Array.prototype.splice = function() {
 // "new String(...)" is not iterable with "for key in .." in Rhino
 WILTON_Object_keys_orig = Object.keys;
 Object.keys = function(obj) {
+    "use strict";
+    
     if ("object" === typeof (obj) && obj instanceof String) {
         var res = WILTON_Object_keys_orig(obj);
         if (res.length !== obj.length) {

@@ -4,11 +4,11 @@
  * and open the template in the editor.
  */
 
-var WILTON_JNI = true;
+function print(msg) {
+    Packages.java.lang.System.out.println(msg);
+}
 
 function WILTON_wiltoncall(name, data) {
     var res = Packages.net.wiltontoolkit.WiltonJni.wiltoncall(name, data);
     return null !== res ? String(res) : null;
 }
-
-WILTON_load(WILTON_REQUIREJS_DIRECTORY + "wilton-require.js");
