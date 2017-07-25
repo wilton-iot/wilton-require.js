@@ -13,19 +13,19 @@
     var confJson = WILTON_wiltoncall("get_wiltoncall_config", "{}");
     var confObj = JSON.parse(confJson);
     if ("string" !== typeof(confObj.defaultScriptEngine) || 
-            "object" !== typeof(confObj.requireJsConfig) ||
-            "string" !== typeof(confObj.requireJsConfig.baseUrl)) {
+            "object" !== typeof(confObj.requireJs) ||
+            "string" !== typeof(confObj.requireJs.baseUrl)) {
         throw new Error("Invalid incomplete wiltoncall config: [" + confJson + "]");
     }
 
     // initialize requirejs
-    WILTON_load(confObj.requireJsConfig.baseUrl + "/wilton-requirejs/require.js");
+    WILTON_load(confObj.requireJs.baseUrl + "/wilton-requirejs/require.js");
     require.load = function(context, moduleName, url) {
         WILTON_load(url);
         //Support anonymous modules.
         context.completeLoad(moduleName);
     };
-    requirejs.config(confObj.requireJsConfig);
+    requirejs.config(confObj.requireJs);
 
 }());
 
