@@ -6,6 +6,9 @@
 
 // see: https://github.com/requirejs/r.js/blob/27594a409b3d37427ec33bdc151ae8a9f67d6b2b/build/jslib/rhino.js
 
+// global var for node libs
+process = {};
+
 (function() {
     "use strict";
 
@@ -13,10 +16,13 @@
     var confJson = WILTON_wiltoncall("get_wiltoncall_config", "{}");
     var confObj = JSON.parse(confJson);
     if ("string" !== typeof(confObj.defaultScriptEngine) || 
+            "object" !== typeof(confObj.environmentVariables) ||
             "object" !== typeof(confObj.requireJs) ||
             "string" !== typeof(confObj.requireJs.baseUrl)) {
         throw new Error("Invalid incomplete wiltoncall config: [" + confJson + "]");
     }
+    // node compat
+    process.env = confObj.environmentVariables;
 
     // initialize requirejs
     WILTON_load(confObj.requireJs.baseUrl + "/wilton-requirejs/require.js");
@@ -86,14 +92,11 @@ function WILTON_run(callbackScriptJson) {
 // misc common globals
 console = {log: print};
 global = {console: console};
-process = {
-    env: {},
-    stdout: {
-        write: print,
-        on: function() {},
-        once: function() {},
-        emit: function() {}
-    }
+process.stdout = {
+    write: print,
+    on: function() {},
+    once: function() {},
+    emit: function() {}
 };
 amd = true;
 
