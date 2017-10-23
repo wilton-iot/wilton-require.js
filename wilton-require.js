@@ -84,8 +84,13 @@ function WILTON_run(callbackScriptJson) {
         }
         return res;
     } catch (e) {
-        throw new Error("module: [" + modname + "], function: [" + func + "]\n" + e.stack);
-//      throw new Error(e.message + "\nmodule: [" + modname + "], function: [" + func + "]\n" + e.stack);
+        var stack = e.stack;
+        var msg = e.message;
+        if ("undefined" === typeof(msg) || null === msg || -1 !== stack.indexOf(msg)) {
+            throw new Error("module: [" + modname + "], function: [" + func + "]\n" + stack);
+        } else {
+            throw new Error("module: [" + modname + "], function: [" + func + "]\nError: " + msg + "\n" + stack);
+        }
     }
 }
 
