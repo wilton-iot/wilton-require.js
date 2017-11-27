@@ -95,7 +95,7 @@ function WILTON_run(callbackScriptJson) {
 }
 
 // misc common globals
-console = {log: print};
+console = {log: print, error: print, info: print};
 global = {console: console};
 process.stdout = {
     write: print,
