@@ -1,0 +1,266 @@
+[
+    {
+        "name": "argparse",
+        "main": "index.js"
+    },
+    {
+        "name": "assert",
+        "main": "assert.js"
+    },
+    {
+        "name": "base64-js",
+        "main": "index.js"
+    },
+    {
+        "name": "bluebird",
+        "main": "wilton-bluebird.js"
+    },
+    {
+        "name": "boolbase",
+        "main": "index.js"
+    },
+    {
+        "name": "buffer",
+        "main": "index.js"
+    },
+    {
+        "name": "cheerio",
+        "main": "index.js"
+    },
+    {
+        "name": "collections",
+        "main": "collections.js"
+    },
+    {
+        "name": "cookie",
+        "main": "index.js"
+    },
+    {
+        "name": "css-select",
+        "main": "index.js"
+    },
+    {
+        "name": "css-what",
+        "main": "index.js"
+    },
+    {
+        "name": "cuint",
+        "main": "index.js"
+    },
+    {
+        "name": "dom-serializer",
+        "main": "index.js"
+    },
+    {
+        "name": "domelementtype",
+        "main": "index.js"
+    },
+    {
+        "name": "domhandler",
+        "main": "index.js"
+    },
+    {
+        "name": "domutils",
+        "main": "index.js"
+    },
+    {
+        "name": "entities",
+        "main": "index.js"
+    },
+    {
+        "name": "events",
+        "main": "events.js"
+    },
+    {
+        "name": "fantasy-land",
+        "main": "index.js"
+    },
+    {
+        "name": "filesize",
+        "main": "lib/filesize"
+    },
+    {
+        "name": "fromcodepoint",
+        "main": "fromcodepoint.js"
+    },
+    {
+        "name": "htmlparser2",
+        "main": "lib/index.js"
+    },
+    {
+        "name": "iconv-lite",
+        "main": "lib/index.js"
+    },
+    {
+        "name": "iconv-lite/encodings",
+        "main": "index.js"
+    },
+    {
+        "name": "ieee754",
+        "main": "index.js"
+    },
+    {
+        "name": "immutable",
+        "main": "dist/immutable.js"
+    },
+    {
+        "name": "inherits",
+        "main": "inherits_browser.js"
+    },
+    {
+        "name": "ip",
+        "main": "lib/ip"
+    },
+    {
+        "name": "json",
+        "main": "json.js"
+    },
+    {
+        "name": "json-stringify-safe",
+        "main": "stringify.js"
+    },
+    {
+        "name": "jsverify",
+        "main": "lib/jsverify.js"
+    },
+    {
+        "name": "lazy-seq",
+        "main": "index.js"
+    },
+    {
+        "name": "lodash",
+        "main": "main.js"
+    },
+    {
+        "name": "mime-db",
+        "main": "index.js"
+    },
+    {
+        "name": "moment",
+        "main": "moment.js"
+    },
+    {
+        "name": "nth-check",
+        "main": "index.js"
+    },
+    {
+        "name": "punycode",
+        "main": "punycode.js"
+    },
+    {
+        "name": "qs",
+        "main": "lib/index.js"
+    },
+    {
+        "name": "querystring",
+        "main": "index.js"
+    },
+    {
+        "name": "ramda",
+        "main": "index.js"
+    },
+    {
+        "name": "random",
+        "main": "lib/random"
+    },
+    {
+        "name": "rc4",
+        "main": "rc4.js"
+    },
+    {
+        "name": "readable-stream",
+        "main": "readable-browser.js"
+    },
+    {
+        "name": "readable-stream/lib/buffer-shims",
+        "main": "index.js"
+    },
+    {
+        "name": "readable-stream/lib/process-nextick-args",
+        "main": "index.js"
+    },
+    {
+        "name": "sanctuary",
+        "main": "index.js"
+    },
+    {
+        "name": "sanctuary-def",
+        "main": "index.js"
+    },
+    {
+        "name": "sanctuary-type-classes",
+        "main": "index.js"
+    },
+    {
+        "name": "sanctuary-type-identifiers",
+        "main": "index.js"
+    },
+    {
+        "name": "sax",
+        "main": "lib/sax.js"
+    },
+    {
+        "name": "sjcl",
+        "main": "index.js"
+    },
+    {
+        "name": "sprintf-js",
+        "main": "src/sprintf.js"
+    },
+    {
+        "name": "statuses",
+        "main": "index.js"
+    },
+    {
+        "name": "string_decoder",
+        "main": "lib/string_decoder.js"
+    },
+    {
+        "name": "tape-compat",
+        "main": "index.js"
+    },
+    {
+        "name": "text",
+        "main": "text.js"
+    },
+    {
+        "name": "tinycolor",
+        "main": "tinycolor.js"
+    },
+    {
+        "name": "trampa",
+        "main": "index.js"
+    },
+    {
+        "name": "typify-parser",
+        "main": "lib/parser"
+    },
+    {
+        "name": "unicode-escape",
+        "main": "index.js"
+    },
+    {
+        "name": "url",
+        "main": "url.js"
+    },
+    {
+        "name": "utf8",
+        "main": "utf8.js"
+    },
+    {
+        "name": "util",
+        "main": "util.js"
+    },
+    {
+        "name": "weak-map",
+        "main": "weak-map.js"
+    },
+    {
+        "name": "xml-writer",
+        "main": "index.js"
+    },
+    {
+        "name": "xregexp",
+        "main": "src/index.js"
+    }
+]

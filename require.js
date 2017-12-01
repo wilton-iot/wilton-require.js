@@ -1573,6 +1573,16 @@ var requirejs, require, define;
 
                 while (defQueue.length) {
                     args = defQueue.shift();
+                    if ("__DUKTAPE_COMMONJS_MISSED_FUNC_BODY" === args[0]) {
+                        var modurl = this.nameToUrl(moduleName);
+                        WILTON_wiltoncall("load_module_script", modurl)
+                            .toString()
+                            .replace(commentRegExp, commentReplace)
+                            .replace(cjsRequireRegExp, function (match, dep) {
+                                args[1].push(dep);
+                            });
+                        args[0] = null;
+                    }
                     if (args[0] === null) {
                         args[0] = moduleName;
                         //If already found an anonymous module and bound it
@@ -2096,6 +2106,9 @@ var requirejs, require, define;
                 //REQUIRES the function to expect the CommonJS variables in the
                 //order listed below.
                 deps = (callback.length === 1 ? ['require'] : ['require', 'exports', 'module']).concat(deps);
+                if ("function () {\"ecmascript\"}" === callback.toString()) {
+                    name = "__DUKTAPE_COMMONJS_MISSED_FUNC_BODY";
+                }
             }
         }
 

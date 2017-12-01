@@ -24,12 +24,20 @@ process = {};
     // node compat
     process.env = confObj.environmentVariables;
 
+    var modstack = [];
     // initialize requirejs
     WILTON_load(confObj.requireJs.baseUrl + "/wilton-requirejs/require.js");
     require.load = function(context, moduleName, url) {
-        WILTON_load(url);
+        modstack.push(moduleName);
+        try {
+            WILTON_load(url);
+        } catch(e) {
+            throw new Error("Module load error: [" + moduleName + "]," +
+                    " dependencies: [" + JSON.stringify(modstack, null, 4)  + "]\n" + e.message);
+        }
         //Support anonymous modules.
         context.completeLoad(moduleName);
+        modstack.pop();
     };
     requirejs.config(confObj.requireJs);
 
@@ -114,7 +122,11 @@ setImmediate = function(fun, arg) { fun(arg);};
 navigator = null;
 
 // use compat buffers
+WILTON_requiresync("base64-js");
+WILTON_requiresync("ieee754");
 Buffer = WILTON_requiresync("buffer").Buffer;
+// htmlparser2 requirement
+WILTON_requiresync("events");
 
 // disable native promises is any
 Promise = undefined;
