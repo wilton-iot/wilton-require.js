@@ -32,6 +32,10 @@
         "main": "collections.js"
     },
     {
+        "name": "concat-stream",
+        "main": "index.js"
+    },
+    {
         "name": "cookie",
         "main": "index.js"
     },
@@ -112,6 +116,10 @@
         "main": "lib/ip"
     },
     {
+        "name": "is-in-browser",
+        "main": "src/index.js"
+    },
+    {
         "name": "json",
         "main": "json.js"
     },
@@ -141,6 +149,10 @@
     },
     {
         "name": "nth-check",
+        "main": "index.js"
+    },
+    {
+        "name": "process-nextick-args",
         "main": "index.js"
     },
     {
@@ -200,6 +212,10 @@
         "main": "lib/sax.js"
     },
     {
+        "name": "saxpath",
+        "main": "index.js"
+    },
+    {
         "name": "sjcl",
         "main": "index.js"
     },
@@ -216,6 +232,10 @@
         "main": "lib/string_decoder.js"
     },
     {
+        "name": "string-to-stream",
+        "main": "index.js"
+    },
+    {
         "name": "tape-compat",
         "main": "index.js"
     },
@@ -229,6 +249,10 @@
     },
     {
         "name": "trampa",
+        "main": "index.js"
+    },
+    {
+        "name": "typedarray",
         "main": "index.js"
     },
     {
