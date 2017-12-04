@@ -220,6 +220,10 @@
         "main": "index.js"
     },
     {
+        "name": "spark-md5",
+        "main": "spark-md5.js"
+    },
+    {
         "name": "sprintf-js",
         "main": "src/sprintf.js"
     },
