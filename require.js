@@ -1575,7 +1575,7 @@ var requirejs, require, define;
                     args = defQueue.shift();
                     if ("__DUKTAPE_COMMONJS_MISSED_FUNC_BODY" === args[0]) {
                         var modurl = this.nameToUrl(moduleName);
-                        WILTON_wiltoncall("load_module_script", modurl)
+                        WILTON_wiltoncall("load_module_resource", modurl)
                             .toString()
                             .replace(commentRegExp, commentReplace)
                             .replace(cjsRequireRegExp, function (match, dep) {
