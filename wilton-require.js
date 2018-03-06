@@ -128,5 +128,5 @@ Buffer = WILTON_requiresync("buffer").Buffer;
 // htmlparser2 requirement
 WILTON_requiresync("events");
 
-// disable native promises is any
+// disable native promises if any
 Promise = undefined;

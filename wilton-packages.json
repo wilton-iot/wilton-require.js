@@ -284,6 +284,10 @@
         "main": "weak-map.js"
     },
     {
+        "name": "xml-js",
+        "main": "lib/index.js"
+    },
+    {
         "name": "xml-writer",
         "main": "index.js"
     },
