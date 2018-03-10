@@ -72,6 +72,10 @@
         "main": "index.js"
     },
     {
+        "name": "es6-shim",
+        "main": "es6-shim.js"
+    },
+    {
         "name": "events",
         "main": "events.js"
     },
@@ -262,6 +266,10 @@
     {
         "name": "typify-parser",
         "main": "lib/parser"
+    },
+    {
+        "name": "uglify-js",
+        "main": "uglify-js.js"
     },
     {
         "name": "unicode-escape",
