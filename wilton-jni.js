@@ -19,7 +19,7 @@ function print(msg) {
 }
 
 function WILTON_wiltoncall(name, data) {
-    var res = Packages.net.wiltontoolkit.WiltonJni.wiltoncall(name, data);
+    var res = Packages.wilton.WiltonJni.wiltoncall(name, data);
     return null !== res ? String(res) : null;
 }
 
