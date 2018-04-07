@@ -15,7 +15,7 @@
  */
 
 function print(msg) {
-    Packages.java.lang.System.out.println(msg);
+    Packages.java.lang.System.out.println(String(msg));
 }
 
 function WILTON_wiltoncall(name, data) {
