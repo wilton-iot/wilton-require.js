@@ -55,7 +55,7 @@ process = {};
 
 function WILTON_requiresync(modname) {
     "use strict";
-    
+
     // string ".js" extension
     var jsext = ".js";
     if (modname.indexOf(jsext, modname.length - jsext.length) !== -1) {
@@ -72,7 +72,7 @@ function WILTON_requiresync(modname) {
 
 function WILTON_run(callbackScriptJson) {
     "use strict";
-    
+
     var modname = "";
     var func = "";
     try {
@@ -84,15 +84,18 @@ function WILTON_run(callbackScriptJson) {
         }
         modname = cs.module;
         var module = WILTON_requiresync(cs.module);
+        var args = "undefined" !== typeof (cs.args) ? cs.args : [];
         var res = null;
         if ("string" === typeof(cs.func) && "" !== cs.func) {
             func = cs.func;
-            var args = "undefined" !== typeof (cs.args) ? cs.args : [];
             if ("function" !== typeof(module[cs.func])) {
                 throw new Error("Invalid 'function' specified, name: [" + cs.func + "]");
             }
             // target call
-            var res = module[cs.func].apply(module, args);
+            res = module[cs.func].apply(module, args);
+        } else if ("function" === typeof(module)) {
+            // target call
+            res = module.apply(null, args);
         }
         if (null === res) {
             return "";
