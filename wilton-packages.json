@@ -288,6 +288,18 @@
         "main": "util.js"
     },
     {
+        "name": "vue",
+        "main": "dist/vue.js"
+    },
+    {
+        "name": "vue-router",
+        "main": "dist/vue-router.js"
+    },
+    {
+        "name": "vuex",
+        "main": "dist/vuex.js"
+    },
+    {
         "name": "weak-map",
         "main": "weak-map.js"
     },
