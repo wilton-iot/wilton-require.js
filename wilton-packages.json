@@ -1,119 +1,135 @@
 [
     {
         "name": "argparse",
-        "main": "index.js"
+        "main": "index"
     },
     {
         "name": "assert",
-        "main": "assert.js"
+        "main": "assert"
     },
     {
         "name": "base64-js",
-        "main": "index.js"
+        "main": "index"
     },
     {
         "name": "bluebird",
-        "main": "wilton-bluebird.js"
+        "main": "wilton-bluebird"
     },
     {
         "name": "boolbase",
-        "main": "index.js"
+        "main": "index"
     },
     {
         "name": "buffer",
-        "main": "index.js"
+        "main": "index"
     },
     {
         "name": "cheerio",
-        "main": "index.js"
+        "main": "index"
     },
     {
         "name": "collections",
-        "main": "collections.js"
+        "main": "collections"
+    },
+    {
+        "name": "complexjs",
+        "main": "complex"
     },
     {
         "name": "concat-stream",
-        "main": "index.js"
+        "main": "index"
     },
     {
         "name": "cookie",
-        "main": "index.js"
+        "main": "index"
     },
     {
         "name": "css-select",
-        "main": "index.js"
+        "main": "index"
     },
     {
         "name": "css-what",
-        "main": "index.js"
+        "main": "index"
     },
     {
         "name": "cuint",
-        "main": "index.js"
+        "main": "index"
+    },
+    {
+        "name": "decimaljs",
+        "main": "decimal"
     },
     {
         "name": "dom-serializer",
-        "main": "index.js"
+        "main": "index"
     },
     {
         "name": "domelementtype",
-        "main": "index.js"
+        "main": "index"
     },
     {
         "name": "domhandler",
-        "main": "index.js"
+        "main": "index"
     },
     {
         "name": "domutils",
-        "main": "index.js"
+        "main": "index"
     },
     {
         "name": "entities",
-        "main": "index.js"
+        "main": "index"
+    },
+    {
+        "name": "escape-latex",
+        "main": "src/index"
     },
     {
         "name": "es6-shim",
-        "main": "es6-shim.js"
+        "main": "es6-shim"
     },
     {
         "name": "events",
-        "main": "events.js"
+        "main": "events"
     },
     {
         "name": "fantasy-land",
-        "main": "index.js"
+        "main": "index"
     },
     {
         "name": "filesize",
         "main": "lib/filesize"
     },
     {
+        "name": "fractionjs",
+        "main": "fraction"
+    },
+    {
         "name": "fromcodepoint",
-        "main": "fromcodepoint.js"
+        "main": "fromcodepoint"
     },
     {
         "name": "htmlparser2",
-        "main": "lib/index.js"
+        "main": "lib/index"
     },
     {
         "name": "iconv-lite",
-        "main": "lib/index.js"
+        "main": "lib/index"
     },
     {
         "name": "iconv-lite/encodings",
-        "main": "index.js"
+        "main": "index"
     },
     {
         "name": "ieee754",
-        "main": "index.js"
+        "main": "index"
     },
     {
         "name": "immutable",
-        "main": "dist/immutable.js"
+        "main": "dist/immutable"
     },
     {
         "name": "inherits",
-        "main": "inherits_browser.js"
+        "main": "inherits_browser"
     },
     {
         "name": "ip",
@@ -121,59 +137,67 @@
     },
     {
         "name": "is-in-browser",
-        "main": "src/index.js"
+        "main": "src/index"
+    },
+    {
+        "name": "javascript-natural-sort",
+        "main": "naturalSort"
     },
     {
         "name": "json",
-        "main": "json.js"
+        "main": "json"
     },
     {
         "name": "json-stringify-safe",
-        "main": "stringify.js"
+        "main": "stringify"
     },
     {
         "name": "jsverify",
-        "main": "lib/jsverify.js"
+        "main": "lib/jsverify"
     },
     {
         "name": "lazy-seq",
-        "main": "index.js"
+        "main": "index"
     },
     {
         "name": "lodash",
-        "main": "main.js"
+        "main": "main"
+    },
+    {
+        "name": "mathjs",
+        "main": "index"
     },
     {
         "name": "mime-db",
-        "main": "index.js"
+        "main": "index"
     },
     {
         "name": "moment",
-        "main": "moment.js"
+        "main": "moment"
     },
     {
         "name": "nth-check",
-        "main": "index.js"
+        "main": "index"
     },
     {
         "name": "process-nextick-args",
-        "main": "index.js"
+        "main": "index"
     },
     {
         "name": "punycode",
-        "main": "punycode.js"
+        "main": "punycode"
     },
     {
         "name": "qs",
-        "main": "lib/index.js"
+        "main": "lib/index"
     },
     {
         "name": "querystring",
-        "main": "index.js"
+        "main": "index"
     },
     {
         "name": "ramda",
-        "main": "index.js"
+        "main": "dist/ramda"
     },
     {
         "name": "random",
@@ -181,87 +205,99 @@
     },
     {
         "name": "rc4",
-        "main": "rc4.js"
+        "main": "rc4"
     },
     {
         "name": "readable-stream",
-        "main": "readable-browser.js"
+        "main": "readable-browser"
     },
     {
         "name": "readable-stream/lib/buffer-shims",
-        "main": "index.js"
+        "main": "index"
     },
     {
         "name": "readable-stream/lib/process-nextick-args",
-        "main": "index.js"
+        "main": "index"
     },
     {
         "name": "sanctuary",
-        "main": "index.js"
+        "main": "index"
     },
     {
         "name": "sanctuary-def",
-        "main": "index.js"
+        "main": "index"
     },
     {
         "name": "sanctuary-type-classes",
-        "main": "index.js"
+        "main": "index"
     },
     {
         "name": "sanctuary-type-identifiers",
-        "main": "index.js"
+        "main": "index"
     },
     {
         "name": "sax",
-        "main": "lib/sax.js"
+        "main": "lib/sax"
     },
     {
         "name": "saxpath",
-        "main": "index.js"
+        "main": "index"
+    },
+    {
+        "name": "seed-random",
+        "main": "index"
     },
     {
         "name": "sjcl",
-        "main": "index.js"
+        "main": "index"
     },
     {
         "name": "spark-md5",
-        "main": "spark-md5.js"
+        "main": "spark-md5"
     },
     {
         "name": "sprintf-js",
-        "main": "src/sprintf.js"
+        "main": "src/sprintf"
     },
     {
         "name": "statuses",
-        "main": "index.js"
+        "main": "index"
     },
     {
         "name": "string_decoder",
-        "main": "lib/string_decoder.js"
+        "main": "lib/string_decoder"
     },
     {
         "name": "string-to-stream",
-        "main": "index.js"
+        "main": "index"
     },
     {
         "name": "tape-compat",
-        "main": "index.js"
+        "main": "index"
     },
     {
         "name": "text",
-        "main": "text.js"
+        "main": "text"
+    },
+    {
+        "name": "tiny-emitter",
+        "main": "dist/tinyemitter"
     },
     {
         "name": "tinycolor",
-        "main": "tinycolor.js"
+        "main": "tinycolor"
     },
     {
         "name": "trampa",
-        "main": "index.js"
+        "main": "index"
+    },
+    {
+        "name": "typed-function",
+        "main": "typed-function"
     },
     {
         "name": "typedarray",
-        "main": "index.js"
+        "main": "index"
     },
     {
         "name": "typify-parser",
@@ -269,50 +305,50 @@
     },
     {
         "name": "uglify-js",
-        "main": "uglify-js.js"
+        "main": "uglify-js"
     },
     {
         "name": "unicode-escape",
-        "main": "index.js"
+        "main": "index"
     },
     {
         "name": "url",
-        "main": "url.js"
+        "main": "url"
     },
     {
         "name": "utf8",
-        "main": "utf8.js"
+        "main": "utf8"
     },
     {
         "name": "util",
-        "main": "util.js"
+        "main": "util"
     },
     {
         "name": "vue",
-        "main": "dist/vue.js"
+        "main": "dist/vue"
     },
     {
         "name": "vue-router",
-        "main": "dist/vue-router.js"
+        "main": "dist/vue-router"
     },
     {
         "name": "vuex",
-        "main": "dist/vuex.js"
+        "main": "dist/vuex"
     },
     {
         "name": "weak-map",
-        "main": "weak-map.js"
+        "main": "weak-map"
     },
     {
         "name": "xml-js",
-        "main": "lib/index.js"
+        "main": "lib/index"
     },
     {
         "name": "xml-writer",
-        "main": "index.js"
+        "main": "index"
     },
     {
         "name": "xregexp",
-        "main": "src/index.js"
+        "main": "src/index"
     }
 ]

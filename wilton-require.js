@@ -123,6 +123,7 @@ process.stdout = {
     once: function() {},
     emit: function() {}
 };
+process.nextTick = require.nextTick;
 amd = true;
 
 // sync calls for bluebird
