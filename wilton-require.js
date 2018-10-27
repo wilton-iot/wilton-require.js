@@ -107,10 +107,13 @@ function WILTON_run(callbackScriptJson) {
     } catch (e) {
         var stack = e.stack;
         var msg = e.message;
-        if ("undefined" === typeof(msg) || null === msg || -1 !== stack.indexOf(msg)) {
+        if (("undefined" === typeof(msg) || null === msg) &&
+                ("object" === typeof(stack) && "function" === typeof(stack.indexOf) && -1 !== stack.indexOf(msg))) {
             throw new Error("module: [" + modname + "], function: [" + func + "]\n" + stack);
-        } else {
+        } else if ("undefined" !== typeof(msg) && "undefined" !== typeof(stack)) {
             throw new Error("module: [" + modname + "], function: [" + func + "]\nError: " + msg + "\n" + stack);
+        } else {
+            throw new Error("module: [" + modname + "], function: [" + func + "]\nError: " + String(e));
         }
     }
 }
