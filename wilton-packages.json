@@ -340,6 +340,14 @@
         "main": "weak-map"
     },
     {
+        "name": "windows-1251",
+        "main": "windows-1251"
+    },
+    {
+        "name": "windows-1252",
+        "main": "windows-1252"
+    },
+    {
         "name": "xml-js",
         "main": "lib/index"
     },
