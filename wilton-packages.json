@@ -20,16 +20,16 @@
         "main": "index"
     },
     {
+        "name": "buckets",
+        "main": "dist/buckets"
+    },
+    {
         "name": "buffer",
         "main": "index"
     },
     {
         "name": "cheerio",
         "main": "index"
-    },
-    {
-        "name": "collections",
-        "main": "collections"
     },
     {
         "name": "complexjs",
@@ -270,6 +270,10 @@
     {
         "name": "string-to-stream",
         "main": "index"
+    },
+    {
+        "name": "stringmap",
+        "main": "stringmap"
     },
     {
         "name": "tape-compat",
