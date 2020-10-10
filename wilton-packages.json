@@ -168,10 +168,6 @@
         "main": "index"
     },
     {
-        "name": "mime-db",
-        "main": "index"
-    },
-    {
         "name": "moment",
         "main": "moment"
     },
