@@ -89,10 +89,16 @@ function WILTON_run(callbackScriptJson) {
         if ("string" === typeof(cs.func) && "" !== cs.func) {
             func = cs.func;
             if ("function" !== typeof(module[cs.func])) {
-                throw new Error("Invalid 'function' specified, name: [" + cs.func + "]");
+                if ("main" === cs.func && "function" === typeof(module)) {
+                    // target call, special case for startup script
+                    res = module.apply(null, args);
+                } else {
+                    throw new Error("Invalid 'function' specified, name: [" + cs.func + "]");
+                }
+            } else {
+                // target call
+                res = module[cs.func].apply(module, args);
             }
-            // target call
-            res = module[cs.func].apply(module, args);
         } else if ("function" === typeof(module)) {
             // target call
             res = module.apply(null, args);
