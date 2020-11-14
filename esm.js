@@ -19,4 +19,8 @@ const globals = (0, eval)("this");
 const define = globals.define;
 const require = globals.WILTON_requiresync;
 
-export { globals, define, require };
+export {
+    globals,
+    define,
+    require
+};

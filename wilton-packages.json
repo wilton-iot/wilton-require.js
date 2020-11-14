@@ -4,6 +4,10 @@
         "main": "index"
     },
     {
+        "name": "arrays",
+        "main": "index"
+    },
+    {
         "name": "assert",
         "main": "assert"
     },
@@ -25,6 +29,10 @@
     },
     {
         "name": "buffer",
+        "main": "index"
+    },
+    {
+        "name": "buffer-from",
         "main": "index"
     },
     {
@@ -82,10 +90,6 @@
     {
         "name": "escape-latex",
         "main": "src/index"
-    },
-    {
-        "name": "es6-shim",
-        "main": "es6-shim"
     },
     {
         "name": "events",
@@ -176,6 +180,10 @@
         "main": "index"
     },
     {
+        "name": "path",
+        "main": "path"
+    },
+    {
         "name": "process-nextick-args",
         "main": "index"
     },
@@ -184,12 +192,12 @@
         "main": "punycode"
     },
     {
-        "name": "qs",
-        "main": "lib/index"
+        "name": "pwdauth",
+        "main": "index"
     },
     {
-        "name": "querystring",
-        "main": "index"
+        "name": "qs",
+        "main": "lib/index"
     },
     {
         "name": "ramda",
@@ -213,22 +221,6 @@
     },
     {
         "name": "readable-stream/lib/process-nextick-args",
-        "main": "index"
-    },
-    {
-        "name": "sanctuary",
-        "main": "index"
-    },
-    {
-        "name": "sanctuary-def",
-        "main": "index"
-    },
-    {
-        "name": "sanctuary-type-classes",
-        "main": "index"
-    },
-    {
-        "name": "sanctuary-type-identifiers",
         "main": "index"
     },
     {
@@ -304,10 +296,6 @@
         "main": "lib/parser"
     },
     {
-        "name": "uglify-js",
-        "main": "uglify-js"
-    },
-    {
         "name": "unicode-escape",
         "main": "index"
     },
@@ -322,6 +310,10 @@
     {
         "name": "util",
         "main": "util"
+    },
+    {
+        "name": "validator",
+        "main": "index"
     },
     {
         "name": "vue",
