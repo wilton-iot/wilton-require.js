@@ -350,9 +350,5 @@
     {
         "name": "xml-writer",
         "main": "index"
-    },
-    {
-        "name": "xregexp",
-        "main": "src/index"
     }
 ]
