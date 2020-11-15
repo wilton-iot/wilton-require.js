@@ -224,6 +224,10 @@
         "main": "index"
     },
     {
+        "name": "sanctuary",
+        "main": "dist/bundle"
+    },
+    {
         "name": "sax",
         "main": "lib/sax"
     },
