@@ -84,6 +84,9 @@ function WILTON_run(callbackScriptJson) {
         }
         modname = cs.module;
         var module = WILTON_requiresync(cs.module);
+        if (null === module) {
+            throw new Error("Module cannot be loaded, id: [" + cs.module +"]");
+        }
         var args = "undefined" !== typeof (cs.args) ? cs.args : [];
         var res = null;
         if ("string" === typeof(cs.func) && "" !== cs.func) {
@@ -102,6 +105,8 @@ function WILTON_run(callbackScriptJson) {
         } else if ("function" === typeof(module)) {
             // target call
             res = module.apply(null, args);
+        } else {
+            throw new Error("Function name not specified, call desc: [" + callbackScriptJson + "]");
         }
         if (null === res) {
             return "";
