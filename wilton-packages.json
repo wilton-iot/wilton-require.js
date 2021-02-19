@@ -152,6 +152,10 @@
         "main": "json"
     },
     {
+        "name": "json-schema",
+        "main": "dist/index"
+    },
+    {
         "name": "json-stringify-safe",
         "main": "stringify"
     },
